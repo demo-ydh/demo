@@ -1,0 +1,32 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index"
+		},
+		{
+			"path" : "pages/mapInfo/mapInfo"
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "地图",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#1AAD19",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "地图"
+			},
+			{
+				"pagePath": "pages/mapInfo/mapInfo",
+				"text": "导航记录"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}

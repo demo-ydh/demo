@@ -1,0 +1,105 @@
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: #f5f5f5;
+}
+.record-list {
+	flex: 1;
+	padding: 20rpx;
+	box-sizing: border-box;
+}
+.record-item {
+	background-color: white;
+	border-radius: 10rpx;
+	padding: 20rpx;
+	margin-bottom: 20rpx;
+	box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+}
+.empty-tip {
+	text-align: center;
+	padding: 100rpx 0;
+	color: #999;
+	font-size: 28rpx;
+}
+/* 路线静态地图样式 */
+.record-map {
+	height: 200rpx;
+	width: 100%;
+	background-color: #f5f5f5;
+	border-radius: 8rpx;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 15rpx 0;
+}
+.map-image {
+	height: 100%;
+	width: 100%;
+}
+.map-loading {
+	color: #999;
+	font-size: 24rpx;
+}
+/* 地图加载完成后的样式变化 */
+.map-loaded {
+	background-color: transparent;
+}
+.record-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15rpx;
+}
+.record-time {
+	font-size: 28rpx;
+	color: #333;
+}
+.record-mode {
+	font-size: 24rpx;
+	color: #0091ff;
+	background-color: #e6f3ff;
+	padding: 5rpx 15rpx;
+	border-radius: 20rpx;
+}
+.record-route {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15rpx;
+}
+.route-point {
+	flex: 1;
+	display: flex;
+	align-items: flex-start;
+}
+.point-icon {
+	font-size: 32rpx;
+	margin-right: 10rpx;
+}
+.point-name {
+	flex: 1;
+	font-size: 26rpx;
+	color: #666;
+	line-height: 32rpx;
+}
+.route-line {
+	width: 2rpx;
+	background-color: #ddd;
+	margin: 12rpx 0 12rpx 12rpx;
+	flex-shrink: 0;
+}
+.record-info {
+	display: flex;
+	justify-content: space-between;
+}
+.record-duration,
+.record-points {
+	font-size: 24rpx;
+	color: #999;
+}
+

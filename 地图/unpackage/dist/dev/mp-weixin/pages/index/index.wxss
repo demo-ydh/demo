@@ -1,0 +1,278 @@
+
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: #f5f5f5;
+	position: relative;
+}
+
+/* 浮动按钮样式 */
+.float-action-btn {
+	position: fixed;
+	right: 40rpx;
+	bottom: 200rpx;
+	width: 100rpx;
+	height: 100rpx;
+	background-color: #0091ff;
+	color: white;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 60rpx;
+	line-height: 1;
+	box-shadow: 0 4rpx 20rpx rgba(0, 145, 255, 0.5);
+	z-index: 999;
+}
+
+/* 导航弹窗样式 */
+.nav-dialog-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1001;
+}
+.nav-dialog {
+	width: 85%;
+	max-height: 70vh;
+	background-color: #ffffff;
+	border-radius: 20rpx;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.nav-dialog-header {
+	padding: 24rpx 30rpx;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.nav-dialog-title {
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #333;
+}
+.nav-dialog-close {
+	font-size: 40rpx;
+	color: #999;
+	line-height: 1;
+}
+.nav-dialog-content {
+	padding: 20rpx;
+	overflow-y: auto;
+}
+.nav-dialog-footer {
+	padding: 20rpx;
+	border-top: 1px solid #eee;
+	text-align: center;
+}
+.search-card {
+	background-color: #f8f8f8;
+	border-radius: 20rpx;
+	overflow: hidden;
+}
+.address-group {
+	display: flex;
+	align-items: center;
+	padding: 20rpx;
+}
+.location-tag {
+	width: 60rpx;
+	height: 60rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+.location-icon {
+width: 32rpx;
+height: 32rpx;
+}
+.location-text {
+	font-size: 24rpx;
+	color: #0091ff;
+	font-weight: bold;
+}
+.place-text {
+	font-size: 32rpx;
+}
+.address-input-group {
+	flex: 1;
+	margin-left: 20rpx;
+}
+.address-label {
+	display: block;
+	font-size: 24rpx;
+	color: #666;
+	margin-bottom: 8rpx;
+}
+.address-input {
+	width: 100%;
+	height: 60rpx;
+	background-color: transparent;
+	font-size: 28rpx;
+	color: #333;
+	padding: 0;
+	border: none;
+}
+.divider-line {
+	height: 1px;
+	background-color: #e0e0e0;
+	margin: 0 20rpx;
+}
+
+/* 出行方式选择器样式 */
+.mode-selector {
+	padding: 20rpx;
+	background-color: #ffffff;
+	margin: 10rpx;
+	border-radius: 12rpx;
+	box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+.selector-title {
+	font-size: 28rpx;
+	color: #333333;
+	display: block;
+	margin-bottom: 10rpx;
+}
+.picker {
+	background-color: #f5f5f5;
+	padding: 20rpx;
+	border-radius: 8rpx;
+	font-size: 28rpx;
+	color: #333333;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.picker-arrow {
+	width: 20rpx;
+	height: 20rpx;
+	border-top: 2rpx solid #999;
+	border-right: 2rpx solid #999;
+	-webkit-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+
+/* 地图视图样式 */
+.map-view {
+	flex: 1;
+	background-color: #ffffff;
+	margin: 10rpx;
+	border-radius: 12rpx;
+	overflow: hidden;
+	box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+/* 底部信息栏样式 */
+.bottom-info {
+	background-color: #ffffff;
+	padding: 20rpx;
+	border-top: 1px solid #eee;
+}
+
+/* 当前位置显示样式 */
+.current-location {
+	margin-bottom: 20rpx;
+	padding: 10rpx;
+	background-color: #f8f8f8;
+	border-radius: 8rpx;
+}
+.location-label {
+	font-size: 26rpx;
+	color: #666;
+}
+.location-text {
+	font-size: 26rpx;
+	color: #333;
+	margin-left: 10rpx;
+}
+
+/* 导航控制按钮样式 */
+.navigation-controls {
+	text-align: center;
+}
+.nav-button {
+	width: 100%;
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 32rpx;
+	font-weight: bold;
+	border-radius: 45rpx;
+	margin: 10rpx 0;
+	border: none;
+	box-shadow: 0 4rpx 20rpx rgba(0,145,255,0.3);
+}
+.start-nav {
+	background-color: #0091ff;
+	color: white;
+}
+.stop-nav {
+	background-color: #ff4d4f;
+	color: white;
+	box-shadow: 0 4rpx 20rpx rgba(255,77,79,0.3);
+}
+.nav-status {
+	display: block;
+	margin-top: 15rpx;
+	color: #0091ff;
+	font-size: 28rpx;
+	font-weight: bold;
+}
+
+/* 搜索结果样式 */
+.search-results {
+		position: relative;
+		width: 100%;
+		background-color: #fff;
+		border-radius: 12rpx;
+		box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+		max-height: 500rpx;
+		overflow-y: auto;
+		margin-top: 10rpx;
+}
+.search-result-item {
+	display: flex;
+	align-items: center;
+	padding: 20rpx;
+	border-bottom: 1rpx solid #f0f0f0;
+}
+.search-result-item:active {
+	background-color: #f5f5f5;
+}
+.result-icon {
+	width: 50rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.result-icon image {
+	width: 32rpx;
+	height: 32rpx;
+}
+.result-content {
+	flex: 1;
+}
+.search-result-name {
+	display: block;
+	font-size: 28rpx;
+	color: #333;
+	margin-bottom: 8rpx;
+	font-weight: 500;
+}
+.search-result-address {
+	display: block;
+	font-size: 24rpx;
+	color: #999;
+}
+
