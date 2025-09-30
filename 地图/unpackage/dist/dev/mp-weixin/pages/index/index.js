@@ -429,40 +429,16 @@ var _default = {
       this.showSearchResults = false;
       // 根据当前搜索类型设置起点或终点
       if (this.currentSearchType === 'end') {
-        this.endPoint.name = tip.name;
         // 获取详细地址信息以获取经纬度
-        this.getLocationByAddress(tip.name, 'end');
+        var _tip$location$split$m = tip.location.split(',').map(Number),
+          _tip$location$split$m2 = (0, _slicedToArray2.default)(_tip$location$split$m, 2),
+          longitude = _tip$location$split$m2[0],
+          latitude = _tip$location$split$m2[1];
+        this.endPoint.latitude = latitude;
+        this.endPoint.longitude = longitude;
+        // 添加终点标记
+        this.addEndMarker();
       }
-    },
-    // 根据地址获取经纬度
-    getLocationByAddress: function getLocationByAddress(address, type) {
-      var _this3 = this;
-      var amapwx = new AMapWX({
-        key: this.amapKey
-      });
-      amapwx.getGeo({
-        options: {
-          address: address
-        },
-        success: function success(res) {
-          console.log('地址解析结果：', res);
-          if (res) {
-            var _res$geocodes$0$locat = res.geocodes[0].location.split(',').map(Number),
-              _res$geocodes$0$locat2 = (0, _slicedToArray2.default)(_res$geocodes$0$locat, 2),
-              longitude = _res$geocodes$0$locat2[0],
-              latitude = _res$geocodes$0$locat2[1];
-            _this3.endPoint.latitude = latitude;
-            _this3.endPoint.longitude = longitude;
-            // 添加终点标记
-            _this3.addEndMarker();
-          } else {
-            console.log('地址解析结果格式不正确：', res);
-          }
-        },
-        fail: function fail(err) {
-          console.log('根据地址获取经纬度失败：', err);
-        }
-      });
     },
     // 添加终点标记
     addEndMarker: function addEndMarker() {
@@ -492,7 +468,7 @@ var _default = {
     },
     // 开始导航
     startNavigation: function startNavigation() {
-      var _this4 = this;
+      var _this3 = this;
       if (!this.endPoint.latitude || !this.endPoint.longitude) {
         uni.showToast({
           title: '请先选择终点',
@@ -510,7 +486,7 @@ var _default = {
       // 设置定时器，每10分钟获取一次位置
       var TEN_MINUTES = 10 * 60 * 1000;
       this.navigationInterval = setInterval(function () {
-        _this4.getCurrentLocationAndMark();
+        _this3.getCurrentLocationAndMark();
       }, TEN_MINUTES);
       uni.showToast({
         title: '开始导航',
@@ -540,7 +516,7 @@ var _default = {
     },
     // 获取当前位置并标点
     getCurrentLocationAndMark: function getCurrentLocationAndMark() {
-      var _this5 = this;
+      var _this4 = this;
       var amapwx = new AMapWX({
         key: this.amapKey
       });
@@ -556,7 +532,7 @@ var _default = {
             };
 
             // 添加到导航点数组
-            _this5.navigationPoints.push(currentPosition);
+            _this4.navigationPoints.push(currentPosition);
 
             // 创建新的标记点
             var newMarker = {
@@ -575,7 +551,7 @@ var _default = {
             };
 
             // 添加到标记数组
-            _this5.markers.push(newMarker);
+            _this4.markers.push(newMarker);
             console.log('添加导航点：', currentPosition);
           }
         },
@@ -629,48 +605,48 @@ var _default = {
     },
     // 获取驾车路线
     getDrivingRoute: function getDrivingRoute(amapwx, origin, destination) {
-      var _this6 = this;
+      var _this5 = this;
       amapwx.getDrivingRoute({
         origin: origin,
         destination: destination,
         success: function success(res) {
           console.log('驾车路线：', res);
-          _this6.drawRoute(res);
+          _this5.drawRoute(res);
         },
         fail: function fail(err) {
           console.log('获取驾车路线失败：', err);
         }
       });
     },
-    // 获取步行路线
-    // getWalkingRoute(amapwx, origin, destination) {
-    // 	amapwx.getWalkingRoute({
-    // 	origin: origin,
-    // 	destination: destination,
-    // 	success: (res) => {
-    // 		console.log('步行路线：', res);
-    // 		this.drawRoute(res);
-    // 	},
-    // 	fail: (err) => {
-    // 		console.log('获取步行路线失败：', err);
-    // 	}
-    // 	});
-    // },
-    // 获取骑行路线
-    getRidingRoute: function getRidingRoute(amapwx, origin, destination) {
-      var _this7 = this;
-      amapwx.getRidingRoute({
+    //获取步行路线
+    getWalkingRoute: function getWalkingRoute(amapwx, origin, destination) {
+      var _this6 = this;
+      amapwx.getWalkingRoute({
         origin: origin,
         destination: destination,
         success: function success(res) {
-          console.log('骑行路线：', res);
-          _this7.drawRoute(res);
+          console.log('步行路线：', res);
+          _this6.drawRoute(res);
         },
         fail: function fail(err) {
-          console.log('获取骑行路线失败：', err);
+          console.log('获取步行路线失败：', err);
         }
       });
     },
+    // 获取骑行路线
+    // getRidingRoute(amapwx, origin, destination) {
+    // 	amapwx.getRidingRoute({
+    // 		origin: origin,
+    // 		destination: destination,
+    // 		success: (res) => {
+    // 			console.log('骑行路线：', res);
+    // 			this.drawRoute(res);
+    // 		},
+    // 		fail: (err) => {
+    // 			console.log('获取骑行路线失败：', err);
+    // 		}
+    // 	});
+    // },
     // 绘制路线
     drawRoute: function drawRoute(res) {
       if (!res.paths || res.paths.length === 0) {

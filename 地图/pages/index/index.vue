@@ -263,35 +263,13 @@
 				this.showSearchResults = false;
 				// 根据当前搜索类型设置起点或终点
 				if (this.currentSearchType === 'end') {
-					this.endPoint.name = tip.name;
 					// 获取详细地址信息以获取经纬度
-					this.getLocationByAddress(tip.name, 'end');
+					const [longitude, latitude] = tip.location.split(',').map(Number);
+					this.endPoint.latitude = latitude;
+					this.endPoint.longitude = longitude;
+					// 添加终点标记
+					this.addEndMarker();
 				}
-			},
-			
-			// 根据地址获取经纬度
-			getLocationByAddress(address, type) {
-				const amapwx = new AMapWX({key: this.amapKey});
-				amapwx.getGeo({
-					options: {
-						address: address
-					},
-					success: (res) => {
-						console.log('地址解析结果：', res);
-						if (res) {
-							const [longitude, latitude] = res.geocodes[0].location.split(',').map(Number);
-							this.endPoint.latitude = latitude;
-							this.endPoint.longitude = longitude;
-							// 添加终点标记
-							this.addEndMarker();
-						} else {
-							console.log('地址解析结果格式不正确：', res);
-						}
-					},
-					fail: (err) => {
-						console.log('根据地址获取经纬度失败：', err);
-					}
-				})
 			},
 			
 			// 添加终点标记
@@ -477,35 +455,35 @@
 					});
 			},
 			
-			// 获取步行路线
-			// getWalkingRoute(amapwx, origin, destination) {
-			// 	amapwx.getWalkingRoute({
-			// 	origin: origin,
-			// 	destination: destination,
-			// 	success: (res) => {
-			// 		console.log('步行路线：', res);
-			// 		this.drawRoute(res);
-			// 	},
-			// 	fail: (err) => {
-			// 		console.log('获取步行路线失败：', err);
-			// 	}
-			// 	});
-			// },
-			
-			// 获取骑行路线
-			getRidingRoute(amapwx, origin, destination) {
-				amapwx.getRidingRoute({
-					origin: origin,
-					destination: destination,
-					success: (res) => {
-						console.log('骑行路线：', res);
-						this.drawRoute(res);
-					},
-					fail: (err) => {
-						console.log('获取骑行路线失败：', err);
-					}
+			//获取步行路线
+			getWalkingRoute(amapwx, origin, destination) {
+				amapwx.getWalkingRoute({
+				origin: origin,
+				destination: destination,
+				success: (res) => {
+					console.log('步行路线：', res);
+					this.drawRoute(res);
+				},
+				fail: (err) => {
+					console.log('获取步行路线失败：', err);
+				}
 				});
 			},
+			
+			// 获取骑行路线
+			// getRidingRoute(amapwx, origin, destination) {
+			// 	amapwx.getRidingRoute({
+			// 		origin: origin,
+			// 		destination: destination,
+			// 		success: (res) => {
+			// 			console.log('骑行路线：', res);
+			// 			this.drawRoute(res);
+			// 		},
+			// 		fail: (err) => {
+			// 			console.log('获取骑行路线失败：', err);
+			// 		}
+			// 	});
+			// },
 			
 			// 绘制路线
 			drawRoute(res) {
